@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac OS X UI</title>
+    <style>
+        body {
+            font-family: 'Lsans';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        @font-face {
+            font-family: 'Lsans';
+            src: url(./Lsans.woff);
+        }
+
+        div[button] {
+            display: inline-flex;
+            background: linear-gradient(0deg, #0002 25%, #fff2 75%);
+            padding: 3px 12.5px;
+            border-radius: 5px;
+            border: solid 1px #999;
+            cursor: default;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div button>
+        <p>Hello World</p>
+    </div>
+
+    <script>
+        const button = document.querySelector('div[button]');
+
+        button.addEventListener('mousedown', () => {
+            button.style.filter = "brightness(0.6)";
+        });
+        button.addEventListener('mouseup', () => {
+            button.style.filter = "brightness(1)";
+        });
+    </script>
+</body>
+
+</html>

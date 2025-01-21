@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac Button UI</title>
+    <style>
+        @font-face {
+            font-family: 'SFPro';
+            src: url(./SFProDisplay.woff2);
+        }
+
+        body {
+            background: url(./Background.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-position: center;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'SFPro';
+            margin: 50px;
+            margin-top: 0;
+        }
+
+        div[container] {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            transition: transform 0.5s ease;
+        }
+
+        div[container][moved] {
+            transform: translateX(-160px);
+        }
+
+        div[subcontainer] {
+            width: auto;
+        }
+
+        div[animation] {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease,
+                transform 0.5s ease, filter 0.25s ease;
+            padding: 20px;
+            background: #fff7;
+            backdrop-filter: blur(50px);
+            -webkit-backdrop-filter: blur(50px);
+            width: 85%;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: solid 1px #fff4;
+        }
+
+        div[animation][show] {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        iframe {
+            border: none;
+            background: #fff5;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 10px;
+            border: solid 1px #fff3;
+        }
+    </style>
+</head>
+
+<body>
+    <div container>
+        <div subcontainer left>
+            <div animation>System 1 -> System 6</div>
+            <div animation>System 7</div>
+            <div animation>Mac OS 8</div>
+            <div animation>Mac OS 9</div>
+            <div animation>Mac OS X 10.0 -> Mac OS X 10.6</div>
+        </div>
+        <div subcontaine style="margin-left: 30px;" right>
+            <div animation>Mac OS X 10.7</div>
+            <div animation>OS X 10.8 -> OS X 10.9</div>
+            <div animation>OS X 10.10</div>
+            <div animation>OS X 10.11</div>
+            <div animation>macOS 10.12 -> macOS 15</div>
+        </div>
+    </div>
+
+    <script>
+        const leftdivs = document.querySelectorAll('div[left] div[animation]');
+        const rightdivs = document.querySelectorAll('div[right] div[animation]');
+        const buttons = [
+            "System1-6.html",
+            "System7.html",
+            "MacOS8.html",
+            "MacOS9.html",
+            "MacOSX0-6.html",
+            "MacOSX7.html",
+            "OSX8-9.html",
+            "OSX10.html",
+            "OSX11.html",
+            "macOS10.12-15.html"
+        ]
+        let iframe_state = false;
+        let iframe;
+
+        function show_button(index) {
+            document.querySelector('div[container]').setAttribute('moved', '');
+            if (!iframe_state) {
+                iframe = document.createElement('iframe');
+                iframe.src = buttons[index];
+                document.body.appendChild(iframe);
+                iframe_state = true;
+            } else {
+                iframe.src = buttons[index];
+            }
+        }
+
+        setTimeout(() => {
+            leftdivs.forEach((div, index) => {
+                setTimeout(() => {
+                    div.setAttribute("show", "");
+                }, index * 100);
+                div.addEventListener("mouseover", () => {
+                    div.style.filter = "brightness(1.25)";
+                });
+                div.addEventListener("mouseout", () => {
+                    div.style.filter = "brightness(1)";
+                });
+                div.addEventListener("click", () => {
+                    show_button(index);
+                });
+            });
+            setTimeout(() => {
+                rightdivs.forEach((div, index) => {
+                    setTimeout(() => {
+                        div.setAttribute("show", "");
+                    }, index * 100);
+                    div.addEventListener("mouseover", () => {
+                        div.style.filter = "brightness(1.25)";
+                    });
+                    div.addEventListener("mouseout", () => {
+                        div.style.filter = "brightness(1)";
+                    });
+                    div.addEventListener("click", () => {
+                        show_button(index+5);
+                    });
+                });
+            }, 150);
+        }, 250);
+    </script>
+</body>
+
+</html>

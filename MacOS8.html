@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac OS UI</title>
+    <style>
+        body {
+            font-family: 'Darwin';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        @font-face {
+            font-family: 'Darwin';
+            src: url(./Darwin.ttf);
+        }
+
+        div[button] {
+            display: inline-block;
+            padding: 4px 3px;
+            background: #fff;
+            border: solid 1px #000;
+            border-radius: 5px;
+            cursor: default;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        p {
+            margin: 0;
+            margin-right: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div button>
+        <p>Hello World</p>
+    </div>
+
+    <script>
+        const button = document.querySelector('div[button]');
+
+        button.addEventListener('mousedown', () => {
+            button.style.filter = "brightness(0.9)";
+        });
+        button.addEventListener('mouseup', () => {
+            button.style.filter = "brightness(1)";
+        });
+    </script>
+</body>
+
+</html>

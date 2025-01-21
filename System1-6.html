@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Software UI</title>
+    <style>
+        body {
+            font-family: 'Chicago';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        @font-face {
+            font-family: 'Chicago';
+            src: url(./Chicago.woff2);
+        }
+
+        div[button] {
+            display: inline-block;
+            padding: 3px;
+            padding-right: 5px;
+            background: #fff;
+            box-shadow: 2.5px 2px 0 #000;
+            border: solid 1.5px #000;
+            cursor: default;
+            user-select: none;
+            -webkit-user-select: none;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div button>
+        Hello World
+    </div>
+
+    <script>
+        const button = document.querySelector('div[button]');
+
+        button.addEventListener('mousedown', () => {
+            button.style.background = "#000";
+            button.style.color = "#fff";
+        });
+        button.addEventListener('mouseup', () => {
+            button.style.background = "#fff";
+            button.style.color = "#000";
+        });
+    </script>
+</body>
+
+</html>

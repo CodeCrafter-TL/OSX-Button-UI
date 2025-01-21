@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS X UI</title>
+    <style>
+        body {
+            font-family: 'SFPro';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        @font-face {
+            font-family: 'SFPro';
+            src: url(./SFProDisplay.woff2);
+        }
+
+        div[button] {
+            display: inline-flex;
+            background: #fff;
+            padding: 3px 12.5px;
+            border-radius: 5px;
+            box-shadow: 0 0 2px #000;
+            cursor: default;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div button>
+        <p>Hello World</p>
+    </div>
+
+    <script>
+        const button = document.querySelector('div[button]');
+
+        button.addEventListener('mousedown', () => {
+            button.style.filter = "brightness(0.8)";
+        });
+        button.addEventListener('mouseup', () => {
+            button.style.filter = "brightness(1)";
+        });
+    </script>
+</body>
+
+</html>
